@@ -249,7 +249,12 @@ class F1TelemetryClient extends EventEmitter {
     if (!this.socket) {
       return;
     }
-
+    // save the lap data to a file
+    this.emit('close');
+    // delay 5 seconds to save the lap data
+    setTimeout(() => {
+      console.log('Saving lap data to a file 📝');
+    }, 10000);
     return this.socket.close(() => {
       console.log('UDP Client closed 🏁');
       this.socket = undefined;
